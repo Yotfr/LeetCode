@@ -13,18 +13,37 @@ fun main() {
         var numsMap: HashMap<Int,Int> = hashMapOf()
 
         nums.forEachIndexed { index, num ->
-            numsMap[num] = index
-        }
-        nums.forEachIndexed { index, num ->
             var diff = target - num
-            if (numsMap.containsKey(diff) && numsMap[diff] != index && numsMap[diff] != null) {
+            if (numsMap.containsKey(diff)) {
                 result = intArrayOf(index, numsMap[diff]!!)
                 return@forEachIndexed
             }
+            numsMap[num] = index
         }
         return result
     }
 }
+
+/*
+
+fun optimizedSolution(nums: IntArray, target: Int): IntArray {
+    var result: IntArray = intArrayOf()
+
+    var numsMap: HashMap<Int,Int> = hashMapOf()
+
+    nums.forEachIndexed { index, num ->
+        numsMap[num] = index
+    }
+    nums.forEachIndexed { index, num ->
+        var diff = target - num
+        if (numsMap.containsKey(diff) && numsMap[diff] != index && numsMap[diff] != null) {
+            result = intArrayOf(index, numsMap[diff]!!)
+            return@forEachIndexed
+        }
+    }
+    return result
+}
+
 
 fun firstSolution(nums: IntArray, target: Int): IntArray {
 
@@ -42,3 +61,5 @@ fun firstSolution(nums: IntArray, target: Int): IntArray {
     }
     return result
 }
+
+ */
